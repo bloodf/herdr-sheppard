@@ -17,6 +17,8 @@ A fresh independent AI chat reviewed the fork. Installer help side effects, an i
 
 ## Remaining live checks
 
-Native Herdr registration, real popup operation and attached-remote controls remain unverified. They require execution inside a genuine Herdr workspace. The OMP reporter is enabled and native plugin files are staged on the three hosts; existing sessions were not restarted. Server graph actions additionally require a platform-compatible build of the fork binary. No macOS graph binary is copied to Linux servers.
+Native Herdr registration is verified on the local host, CortexOS and bloodf Incus. Each host reports `bloodf.herdr-sheppard` enabled with its expected actions and panes. Registration is a host configuration operation and needs no focused-session access. The OMP reporter is also enabled on the three hosts; existing sessions were not restarted.
+
+Real popup operation and attached-remote controls remain unverified. They require execution inside a genuine Herdr workspace. Server graph actions additionally require a platform-compatible build of the fork binary. No macOS graph binary is copied to Linux servers.
 
 Fixtures use artificial Herdr responses. They prove scoped routing and rejection behavior, not connectivity or atomic compare-and-send guarantees from Herdr itself. No claim of complete project orchestration or quota recovery follows from these UI tests.

@@ -6,7 +6,7 @@ Sheppard works in the Herdr workspace where you start it. It discovers attached 
 
 ## Install
 
-Requires Python 3 and Herdr 0.9.3 or later on macOS or Linux. Run registration from a genuine Herdr terminal:
+Requires Python 3 and Herdr 0.9.3 or later on macOS or Linux. Register the plugin on each host:
 
 ```sh
 git clone https://github.com/bloodf/herdr-sheppard
@@ -104,7 +104,7 @@ Remote commands always carry the saved machine's opaque ID. A failed remote look
 
 The browser server uses a capability token, exact Host/Origin checks, bounded requests and timeouts. Output is read on demand and common secrets are redacted. Metadata expires; missing evidence appears as unknown. No provider credentials are published to the dashboard.
 
-Fixture tests validate these boundaries without controlling real sessions. Registration and attached-remote operation need a smoke test inside genuine Herdr before treating the integration as live-validated.
+Fixture tests validate these boundaries without controlling real sessions. Plugin registration is a host configuration operation. Opening the popup/dashboard and validating attached-remote operation require a genuine Herdr workspace.
 
 ## Development
 

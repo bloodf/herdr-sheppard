@@ -4,7 +4,7 @@ Open-source Herdr plugin, licensed under [MIT](LICENSE). The Python controller a
 
 ## Standalone installation
 
-Clone this repository, then from a genuine Herdr terminal run `herdr plugin link /absolute/path/to/herdr-sheppard/herdr-plugin`. Python 3 and Herdr 0.9.3 are required. The controller uses only the Python standard library; the browser uses no external libraries or services. Choose **Sheppard: orchestrators and workers** or **Sheppard: browser dashboard** from Herdr’s plugin actions. The optional reporter and personal OMP installer are separate from standalone Herdr installation.
+Clone this repository, then run `herdr plugin link /absolute/path/to/herdr-sheppard/herdr-plugin`. Python 3 and Herdr 0.9.3 are required. The controller uses only the Python standard library; the browser uses no external libraries or services. Choose **Sheppard: orchestrators and workers** or **Sheppard: browser dashboard** from Herdr’s plugin actions. The optional reporter and personal OMP installer are separate from standalone Herdr installation.
 
 ## Building the optional reporter
 
@@ -18,7 +18,7 @@ Sheppard makes no model calls. OMP and the Laya framework retain task assignment
 
 Launch Sheppard from the intended workspace with Herdr's plugin action **Sheppard: orchestrators and workers**. Its `open` action opens the plugin's `crew` popup pane in the captured starting workspace. Python 3 and Herdr 0.9.3 or newer are required on macOS or Linux.
 
-The plugin must receive real `HERDR_ENV=1` and Herdr connection context. Workspace scope comes from native `HERDR_PLUGIN_CONTEXT_JSON.workspace_id` for plugin invocations, or the managed terminal’s `HERDR_WORKSPACE_ID`. A popup refuses a captured scope that differs from its actual native invocation context. Do not set those variables yourself to imitate a running session. Outside Herdr, the launcher exits without sending a Herdr command. Registration and actual live operation remain pending when installation is performed outside Herdr; fixture tests do not prove registration or connectivity to a real remote server.
+The plugin must receive real `HERDR_ENV=1` and Herdr connection context. Workspace scope comes from native `HERDR_PLUGIN_CONTEXT_JSON.workspace_id` for plugin invocations, or the managed terminal’s `HERDR_WORKSPACE_ID`. A popup refuses a captured scope that differs from its actual native invocation context. Do not set those variables yourself to imitate a running session. Outside Herdr, the launcher exits without sending a Herdr command. Plugin registration can run outside Herdr as a host configuration operation. The popup and browser launcher require genuine Herdr context. Fixture tests do not prove connectivity to a real remote server.
 
 The terminal popup refreshes its inventory while open. Select a row with `j`/`k` or arrow keys:
 
@@ -153,6 +153,6 @@ Backend tests use a fixture runner, a temporary fake Herdr executable, and an is
 
 From `manager/`, run `bun install --frozen-lockfile`, `bun run check`, and `bun run build` to build the optional OMP metadata reporter. The Python manager itself needs no Rust build.
 
-After the existing OMP/Laya framework, Pi adapter, and Laya skills package are present, `python3 manager/install.py` stages this manager together with `herdr-plugin/`, probes actual OMP extension loading without model requests, backs up OMP registration files, and enables the reporter. The stable root is `~/.omp/agent/lib/herdr-sheppard`. New OMP sessions load the reporter; existing sessions are not restarted. Native Herdr registration remains pending until `herdr plugin link ~/.omp/agent/lib/herdr-sheppard/herdr-plugin` is run inside a genuine Herdr session.
+After the existing OMP/Laya framework, Pi adapter, and Laya skills package are present, `python3 manager/install.py` stages this manager together with `herdr-plugin/`, probes actual OMP extension loading without model requests, backs up OMP registration files, and enables the reporter. The stable root is `~/.omp/agent/lib/herdr-sheppard`. New OMP sessions load the reporter; existing sessions are not restarted. Register the native plugin with `herdr plugin link ~/.omp/agent/lib/herdr-sheppard/herdr-plugin --enabled` on each host. Its popup and dashboard actions run inside a genuine Herdr workspace.
 
 The unified plugin's `open` and `browser` actions manage OMP workers through native Herdr state. Its distinct `graph-open`, `graph-split`, and `graph-tab` actions use the inherited transcript visualization for **Claude Code and Codex only**. OMP/Pi transcript parsing is not provided; those sessions use the worker manager instead. Build the fork graph with `cargo build --release --bin sheppard` from the repository root, or explicitly select a built executable through `SHEPPARD_BIN`. No stock `zoe` binary is installed or launched. An absent graph binary does not prevent the Python manager from running.

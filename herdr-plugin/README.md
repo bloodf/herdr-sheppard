@@ -2,7 +2,7 @@
 
 The unified `bloodf.herdr-sheppard` plugin provides OMP worker management and the forked Zoetrope transcript viewer. It requires Herdr 0.9.1 or later and Python 3 on macOS or Linux. It has no install-time graph binary gate and downloads no executable.
 
-Register the source directory with `herdr plugin link /absolute/path/to/herdr-sheppard/herdr-plugin` from a genuine Herdr session. Registration is separate from copying files or enabling the optional OMP reporter. The [manager guide](../manager/README.md) describes scoped local and saved-remote observation, controls, telemetry, and the reporter installer.
+Register the source directory with `herdr plugin link /absolute/path/to/herdr-sheppard/herdr-plugin` on each host. Registration is separate from copying files or enabling the optional OMP reporter. The [manager guide](../manager/README.md) describes scoped local and saved-remote observation, controls, telemetry, and the reporter installer.
 
 | Action | Result |
 | --- | --- |
