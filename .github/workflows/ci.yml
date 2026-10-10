@@ -112,7 +112,7 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@v2
       - name: Verify the published tarball
-        run: cargo publish --dry-run --locked
+        run: cargo package --locked
 
   msrv:
     name: MSRV
@@ -155,3 +155,29 @@ jobs:
         with:
           args: "-vv"
           commits: ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}
+
+  manager:
+    name: Herdr manager
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - uses: oven-sh/setup-bun@v2
+      - name: Check controller and native bridge
+        run: |
+          python3 -m unittest discover -s manager -p 'test_*.py'
+          python3 herdr-plugin/test_bridge.py
+          node manager/test_dashboard.cjs
+          node manager/test_auth.cjs
+      - name: Build and check optional OMP reporter
+        working-directory: manager
+        run: |
+          bun install --frozen-lockfile
+          bun run check
+          bun run build
+          bun run test:reporter

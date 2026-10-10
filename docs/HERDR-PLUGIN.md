@@ -1,3 +1,7 @@
+# Upstream Herdr bridge reference
+
+This document describes the inherited Zoetrope bridge. For this fork's active manager and graph actions, see [native plugin](../herdr-plugin/README.md) and [manager](../manager/README.md).
+
 # The Herdr plugin
 
 A bridge, not a second frontend. [Herdr](https://herdr.dev) already knows which

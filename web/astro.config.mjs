@@ -1,6 +1,6 @@
 // @ts-check
 import { execFileSync } from 'node:child_process';
-import { defineConfig, fontProviders } from 'astro/config';
+import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import sitemap from '@astrojs/sitemap';
 
@@ -66,34 +66,6 @@ function lastmod(pathname) {
 
 // https://astro.build/config
 export default defineConfig({
-  // Canonical origin. Served at the root of its own subdomain, so no `base` is
-  // needed and asset paths stay root-relative. `site` is what lets the sitemap
-  // integration emit absolute URLs (without it, sitemap generation is skipped).
-  site: 'https://zoetrope.furkankly.dev',
-  //
-  // Brand type, self-hosted at build time (no runtime font CDN): Space Mono for
-  // the display voice (wordmark, headlines) and JetBrains Mono for UI/body and
-  // the ASCII flow-graph on the landing (chosen for its solid box-drawing +
-  // block-glyph coverage so `╭─┤├╮ ● ◌ ✓ ▓ █` render aligned). Exposed as CSS
-  // variables the bespoke landing (`src/pages/index.astro`) and the brand CSS use.
-  fonts: [
-    {
-      provider: fontProviders.google(),
-      name: 'Space Mono',
-      cssVariable: '--font-display',
-      weights: [400, 700],
-      styles: ['normal'],
-      fallbacks: ['ui-monospace', 'SFMono-Regular', 'monospace'],
-    },
-    {
-      provider: fontProviders.google(),
-      name: 'JetBrains Mono',
-      cssVariable: '--font-mono',
-      weights: [400, 500, 700],
-      styles: ['normal'],
-      fallbacks: ['ui-monospace', 'SFMono-Regular', 'monospace'],
-    },
-  ],
   integrations: [
     // Registered explicitly so it can carry `serialize`. Starlight adds its own
     // copy of this integration only when one is not already present (see the
@@ -133,7 +105,7 @@ export default defineConfig({
         {
           label: 'Start here',
           items: [
-            { label: 'What is zoetrope?', link: '/' },
+            { label: 'What is herdr-sheppard?', link: '/' },
             { label: 'Install', link: '/guides/install/' },
             { label: 'Usage & keys', link: '/guides/usage/' },
           ],

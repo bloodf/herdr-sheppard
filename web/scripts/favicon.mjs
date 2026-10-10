@@ -25,7 +25,7 @@ const HERE = dirname(fileURLToPath(import.meta.url));
 const REPO = join(HERE, "..", "..");
 
 // The mark's own ground (the <rect> in icon.svg, and --ink in the pages).
-const INK = "#121212";
+const INK = "#151820";
 
 const svg = readFileSync(join(REPO, "assets", "icon.svg"), "utf8");
 

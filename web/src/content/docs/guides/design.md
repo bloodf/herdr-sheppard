@@ -97,7 +97,7 @@ acknowledged and finishing, or an agent that went quiet, lives in the core once
 and survives every format.
 
 The same rule holds one level up, for finding files: a provider states what a
-file is, and the core decides what a session is. That is why `zoe <file>` opens
+file is, and the core decides what a session is. That is why `sheppard <file>` opens
 any file of a session from either agent, and tells the formats apart by content
 rather than by name.
 
@@ -133,7 +133,7 @@ sit on top of it, one per crate.
   lifecycle, and keyboard input. Those pull `tokio` and the filesystem, so they sit
   behind a `native` feature that is on by default and off for every other target.
 - **`zoetrope-web`** — the **browser frontend**, in
-  [`web/wasm/`](https://github.com/furkankly/zoetrope/tree/main/web/wasm). It
+  [`web/wasm/`](https://github.com/bloodf/herdr-sheppard/tree/main/web/wasm). It
   depends on the core with default features off and adds a
   [ratzilla](https://github.com/ratatui/ratzilla) WebGL2 backend plus a small
   event-conversion layer. The browser has no filesystem, so bytes are handed
@@ -148,6 +148,6 @@ it, and there is no HTTP client anywhere in the dependency tree.
 
 The deeper reasoning (the heuristics catalogue, the two-clocks table, and the known
 rough edges) is in
-[`docs/ARCHITECTURE.md`](https://github.com/furkankly/zoetrope/blob/main/docs/ARCHITECTURE.md).
+[`docs/ARCHITECTURE.md`](https://github.com/bloodf/herdr-sheppard/blob/main/docs/ARCHITECTURE.md).
 The module map, transcript format, and type shapes are in
-[`docs/DESIGN.md`](https://github.com/furkankly/zoetrope/blob/main/docs/DESIGN.md).
+[`docs/DESIGN.md`](https://github.com/bloodf/herdr-sheppard/blob/main/docs/DESIGN.md).

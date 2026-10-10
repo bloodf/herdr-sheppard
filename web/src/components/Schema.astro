@@ -1,7 +1,7 @@
 ---
 // Structured data, mirroring rataflow's — see that file for the reasoning.
 //
-// SoftwareApplication here, not SoftwareSourceCode: zoetrope is a program you
+// SoftwareApplication here, not SoftwareSourceCode: herdr-sheppard is a program you
 // install and run, where rataflow is a library you build against. That choice
 // is what `applicationCategory` and `operatingSystem` describe, and it is why
 // an `offers` block (free) makes sense on this one and not on the crate.
@@ -13,7 +13,7 @@ const graph = {
     {
       "@type": "SoftwareApplication",
       "@id": `${SITE}/#software`,
-      name: "zoetrope",
+      name: "herdr-sheppard",
       description:
         "A terminal UI that visualizes Claude Code and Codex agent sessions as a live flow graph. Replay a finished transcript or follow a running one. Zero network IO; nothing leaves your machine.",
       keywords:
@@ -21,7 +21,7 @@ const graph = {
       url: SITE,
       applicationCategory: "DeveloperApplication",
       operatingSystem: "macOS, Linux, Windows",
-      codeRepository: "https://github.com/furkankly/zoetrope",
+      codeRepository: "https://github.com/bloodf/herdr-sheppard",
       author: { "@id": `${SITE}/#author` },
       image: `${SITE}/og.png`,
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
@@ -29,14 +29,14 @@ const graph = {
     {
       "@type": "Person",
       "@id": `${SITE}/#author`,
-      name: "Furkan Kalaycioglu",
-      url: "https://furkankly.dev",
+      name: "bloodf",
+      url: "https://github.com/bloodf",
     },
     {
       "@type": "WebSite",
       "@id": `${SITE}/#website`,
       url: SITE,
-      name: "zoetrope",
+      name: "herdr-sheppard",
       publisher: { "@id": `${SITE}/#author` },
     },
   ],

@@ -1,11 +1,9 @@
 ---
-// The in-browser zoetrope app — a standalone full-screen page (NOT a Starlight
+// The in-browser herdr-sheppard app — a standalone full-screen page (NOT a Starlight
 // docs route). It loads the WebAssembly build (the Rust `web` bin, compiled by
 // `pnpm build:wasm` into /public/wasm) which boots into the bundled demo, then
 // lets you replay your own transcript or — in Chromium — open a session folder
 // and follow it live. Everything runs locally; nothing is uploaded.
-import { Font } from 'astro:assets';
-import Analytics from '../components/Analytics.astro';
 import Seo from '../components/Seo.astro';
 import Schema from '../components/Schema.astro';
 import { REPO_URL } from '../consts.ts';
@@ -16,17 +14,16 @@ const wasmBase = '/wasm';
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <Analytics />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-    <title>zoetrope in the browser: replay Claude Code and Codex sessions</title>
+    <title>herdr-sheppard in the browser: replay Claude Code and Codex sessions</title>
     <meta
       name="description"
-      content="Run zoetrope in your browser: replay a Claude Code or Codex session transcript as a live flow graph, fully locally."
+      content="Run herdr-sheppard in your browser: replay a Claude Code or Codex session transcript as a live flow graph, fully locally."
     />
     <Schema />
     <Seo
-      title="zoetrope in the browser: replay Claude Code and Codex sessions"
-      description="Run zoetrope in your browser: replay a Claude Code or Codex session transcript as a live flow graph, fully locally."
+      title="herdr-sheppard in the browser: replay Claude Code and Codex sessions"
+      description="Run herdr-sheppard in your browser: replay a Claude Code or Codex session transcript as a live flow graph, fully locally."
     />
     {/* Google Search cannot read an SVG favicon — its supported list is BMP,
         GIF, ICO, PNG, JPEG, PPM and TIFF — and with `/favicon.svg` the only
@@ -42,8 +39,6 @@ const wasmBase = '/wasm';
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <!-- Same self-hosted brand fonts as the landing (Space Mono for the wordmark,
          JetBrains Mono for UI text), so the top bar reads identically across pages. -->
-    <Font cssVariable="--font-mono" preload />
-    <Font cssVariable="--font-display" preload />
     <!-- Resolve the wasm's libm `env` imports (fmod/round/critical-section) to the
          JS shim copied next to the wasm. Must precede the module script below. -->
     <script type="importmap" is:inline>
@@ -51,15 +46,15 @@ const wasmBase = '/wasm';
     </script>
     <style is:inline>
       :root {
-        --gold: #d7af00;
-        --gold-bright: #f0d56a;
-        --green: #87d787;
-        --ink: #121212;
-        --panel: #1c1c1c;
-        --dim: #585858;
-        --bright: #e6e6e6;
-        --mono: var(--font-mono), ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-        --display: var(--font-display), var(--font-mono), ui-monospace, monospace;
+        --gold: #00b4ff;
+        --gold-bright: #00b4ff;
+        --green: #00ff88;
+        --ink: #151820;
+        --panel: #0f1216;
+        --dim: #6b7280;
+        --bright: #e8ecf4;
+        --mono: var(--font-mono, ui-monospace), ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        --display: var(--font-display, ui-monospace), var(--font-mono, ui-monospace), ui-monospace, monospace;
       }
       html,
       body {
@@ -102,7 +97,7 @@ const wasmBase = '/wasm';
         gap: 0.75rem;
         padding: 0.5rem 0.75rem;
         background: var(--ink);
-        border-bottom: 1px solid #2a2a2a;
+        border-bottom: 1px solid #2a3038;
         font-size: 0.8rem;
       }
       /* The wordmark is the page's <h1> — /app is a WebGl2 canvas, so without it
@@ -149,7 +144,7 @@ const wasmBase = '/wasm';
         font-size: 0.78rem;
         color: var(--bright);
         background: var(--panel);
-        border: 1px solid #343434;
+        border: 1px solid #2a3038;
         border-radius: 6px;
         padding: 0.32rem 0.7rem;
         cursor: pointer;
@@ -163,7 +158,7 @@ const wasmBase = '/wasm';
       }
       button.act.primary {
         border-color: var(--gold);
-        color: #1a1500;
+        color: #0f1216;
         background: var(--gold);
         font-weight: 600;
       }
@@ -174,7 +169,7 @@ const wasmBase = '/wasm';
       button.act:disabled {
         opacity: 0.4;
         cursor: not-allowed;
-        border-color: #343434;
+        border-color: #2a3038;
         color: var(--dim);
       }
       .link {
@@ -198,7 +193,7 @@ const wasmBase = '/wasm';
         color: var(--green);
       }
       .statusbar.err {
-        color: #f0a0a0;
+        color: #ff4757;
       }
       @media (max-width: 860px) {
         .statusbar { display: none; }
@@ -239,7 +234,7 @@ const wasmBase = '/wasm';
       .mnote-card {
         max-width: 22rem;
         background: var(--ink);
-        border: 1px solid #343434;
+        border: 1px solid #2a3038;
         border-radius: 12px;
         padding: 1.3rem 1.35rem 1.4rem;
       }
@@ -261,7 +256,7 @@ const wasmBase = '/wasm';
         margin: 0 0 1.1rem;
         font-size: 0.86rem;
         line-height: 1.55;
-        color: #b6b6b6;
+        color: #9ca3b0;
       }
       .mnote-card button {
         width: 100%;
@@ -269,7 +264,7 @@ const wasmBase = '/wasm';
         font-size: 0.82rem;
         color: var(--bright);
         background: var(--panel);
-        border: 1px solid #343434;
+        border: 1px solid #2a3038;
         border-radius: 7px;
         padding: 0.55rem 0.9rem;
         cursor: pointer;
@@ -296,7 +291,7 @@ const wasmBase = '/wasm';
         display: flex;
         flex-direction: column;
         background: var(--ink);
-        border: 1px solid #343434;
+        border: 1px solid #2a3038;
         border-radius: 10px;
         overflow: hidden;
         box-shadow: 0 12px 48px rgba(0, 0, 0, 0.55);
@@ -306,7 +301,7 @@ const wasmBase = '/wasm';
         align-items: center;
         justify-content: space-between;
         padding: 0.7rem 0.9rem;
-        border-bottom: 1px solid #2a2a2a;
+        border-bottom: 1px solid #2a3038;
         font-size: 0.85rem;
         color: var(--gold-bright);
       }
@@ -358,7 +353,7 @@ const wasmBase = '/wasm';
       }
       .help-body code {
         background: var(--panel);
-        border: 1px solid #343434;
+        border: 1px solid #2a3038;
         border-radius: 5px;
         padding: 0.1rem 0.42rem;
         color: var(--gold-bright);
@@ -369,7 +364,7 @@ const wasmBase = '/wasm';
         font-size: 0.72rem;
         color: var(--dim);
         background: none;
-        border: 1px solid #343434;
+        border: 1px solid #2a3038;
         border-radius: 5px;
         padding: 0.05rem 0.42rem;
         cursor: pointer;
@@ -384,7 +379,7 @@ const wasmBase = '/wasm';
       .help-steps li { margin: 0.3rem 0; }
       .help-body kbd {
         background: var(--panel);
-        border: 1px solid #343434;
+        border: 1px solid #2a3038;
         border-bottom-width: 2px;
         border-radius: 4px;
         padding: 0.02rem 0.34rem;
@@ -413,7 +408,7 @@ const wasmBase = '/wasm';
       }
       .session-row:hover {
         background: var(--panel);
-        border-color: #343434;
+        border-color: #2a3038;
       }
       .session-row.live:hover {
         border-color: var(--green);
@@ -464,7 +459,7 @@ const wasmBase = '/wasm';
             transform="rotate(120 16 16)"></line>
           <circle class="glyph" cx="16" cy="16" r="2.6" fill="var(--green)"></circle>
         </svg>
-        zoetrope
+        herdr-sheppard
         </a>
       </h1>
       <span id="status" class="statusbar">loading wasm…</span>
@@ -497,9 +492,9 @@ const wasmBase = '/wasm';
         so the document outline has one heading and it is the wordmark. */}
     <div id="mobile-note" class="mnote" data-nosnippet>
       <div class="mnote-card">
-        <div class="mnote-brand"><span class="glyph">●</span> zoetrope</div>
+        <div class="mnote-brand"><span class="glyph">●</span> herdr-sheppard</div>
         <p class="mnote-title">Built for a bigger screen</p>
-        <p>zoetrope draws a whole Claude Code or Codex session — every agent, its subagents, and each tool call — as one flow graph, which wants more room than a phone has. Open it on a desktop to scrub the timeline, zoom around, and load your own sessions.</p>
+        <p>herdr-sheppard draws a whole Claude Code or Codex session — every agent, its subagents, and each tool call — as one flow graph, which wants more room than a phone has. Open it on a desktop to scrub the timeline, zoom around, and load your own sessions.</p>
         <button id="mobile-note-dismiss">Look around anyway</button>
       </div>
     </div>
@@ -522,7 +517,7 @@ const wasmBase = '/wasm';
     <div id="picker-help" class="modal">
       <div class="modal-panel">
         <div class="modal-head">
-          <span>Point zoetrope at your sessions</span>
+          <span>Point herdr-sheppard at your sessions</span>
           <button id="help-close" class="modal-x" title="Close">✕</button>
         </div>
         <div class="help-body">

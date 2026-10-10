@@ -8,7 +8,7 @@ See `docs/ARCHITECTURE.md` for the invariants and principles, `docs/DESIGN.md` f
 
 ## Running
 
-Two crates: `zoetrope` at the root (the published lib + the `zoe` binary) and `zoetrope-web` in `web/wasm/` (the browser frontend, `publish = false`, wasm32-only). The browser frontend is **excluded** from the root workspace and resolves as its own — it cannot be compiled for the host at all, so keeping it a member would mean permanent phantom errors in the editor. The commands below therefore only touch `zoetrope`; the browser frontend needs its own manifest path.
+Two crates: `zoetrope` at the root (the published lib + the `sheppard` binary) and `zoetrope-web` in `web/wasm/` (the browser frontend, `publish = false`, wasm32-only). The browser frontend is **excluded** from the root workspace and resolves as its own — it cannot be compiled for the host at all, so keeping it a member would mean permanent phantom errors in the editor. The commands below therefore only touch `zoetrope`; the browser frontend needs its own manifest path.
 
 ```bash
 cargo build                     # native (default features)
@@ -23,7 +23,7 @@ cd web/wasm && cargo clippy   # its .cargo/config.toml defaults to wasm32
 
 ## Commits
 
-[Conventional Commits](https://www.conventionalcommits.org/), lowercase imperative subject. Scope is a module, not a file: `fact`, `provider`, `state`, `graph`, `timeline`, `tailer`, `ui`, `panel`, `cli`, `wasm`, `web`, `herdr`, `api`, `docs`. `herdr` is the Herdr plugin in `herdr-plugin/`, a bridge of shell scripts that opens the focused agent pane's session in `zoe`; it ships by git clone rather than with the crate. `api` is a change to what the crate exposes rather than to one module. A change inside one provider is `provider` (e.g. `fix(provider): inherit the timestamp across progress records`).
+[Conventional Commits](https://www.conventionalcommits.org/), lowercase imperative subject. Scope is a module, not a file: `fact`, `provider`, `state`, `graph`, `timeline`, `tailer`, `ui`, `panel`, `cli`, `wasm`, `web`, `herdr`, `api`, `docs`. `herdr` is the Herdr plugin in `herdr-plugin/`, a bridge of shell scripts that opens the focused agent pane's session in `sheppard`; it ships by git clone rather than with the crate. `api` is a change to what the crate exposes rather than to one module. A change inside one provider is `provider` (e.g. `fix(provider): inherit the timestamp across progress records`).
 
 ```
 feat(timeline): index the playhead by event instead of wall-clock

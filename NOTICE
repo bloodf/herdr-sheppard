@@ -1,0 +1,13 @@
+herdr-sheppard is a fork of Zoetrope by Furkan Kalaycioglu.
+Upstream: https://github.com/furkankly/zoetrope
+Original MIT license and copyright remain in LICENSE.
+
+Fork integration and manager additions: copyright 2026 bloodf, MIT.
+
+Titanium color palette follows oh-my-pi by can1357, MIT.
+Source: https://github.com/can1357/oh-my-pi
+The MIT palette source license is retained in OMP-THEME-LICENSE.
+The design uses local monospace fonts; no OMP logo is copied.
+
+The internal Rust library and WASM export names retain zoetrope for compatibility.
+Inherited demo recordings show the original upstream UI.

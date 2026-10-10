@@ -20,10 +20,11 @@ edition = "2024"
 rust-version = "1.88"
 description = "Terminal UI that visualizes Claude Code and Codex agent sessions as a live flow graph."
 license = "MIT"
+publish = false
 readme = "README.md"
-repository = "https://github.com/furkankly/zoetrope"
-homepage = "https://zoetrope.furkankly.dev"
-documentation = "https://zoetrope.furkankly.dev"
+repository = "https://github.com/bloodf/herdr-sheppard"
+homepage = "https://github.com/bloodf/herdr-sheppard"
+documentation = "https://github.com/bloodf/herdr-sheppard#readme"
 keywords = ["claude-code", "codex", "tui", "agents", "visualization"]
 categories = ["command-line-utilities", "development-tools", "visualization"]
 # An allow-list, not a deny-list: state what the crate ships and everything else
@@ -33,7 +34,7 @@ categories = ["command-line-utilities", "development-tools", "visualization"]
 # and the browser frontend (which is what `include_str!`s the demo fixture), and
 # the GIFs and tapes are ~5MB of recordings this crate never reads.
 # Cargo adds Cargo.toml and Cargo.lock on its own.
-include = ["/src/**/*.rs", "/README.md", "/LICENSE"]
+include = ["/src/**/*.rs", "/README.md", "/LICENSE", "/NOTICE", "/OMP-THEME-LICENSE"]
 
 [features]
 default = ["native"]
@@ -98,8 +99,8 @@ imbl = "7.0.1"
 chrono = { version = "0.4", features = ["wasmbind"] }
 
 [[bin]]
-# The crate is `zoetrope`; the command you type is `zoe`.
-name = "zoe"
+# The upstream-compatible library is `zoetrope`; the fork command is `sheppard`.
+name = "sheppard"
 path = "src/main.rs"
 # Native terminal binary — skipped by a `--no-default-features` build.
 required-features = ["native"]

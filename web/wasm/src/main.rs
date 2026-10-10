@@ -167,13 +167,12 @@ fn main() -> io::Result<()> {
     // on the right/bottom edge is left as padding. ratzilla clears that strip to
     // black by default, which shows against zoetrope's backdrop as the window
     // resizes (the strip is `container_size % cell_size`). Match it to the flow's
-    // canvas background (`Palette::DARK.canvas_bg` = indexed 233, #121212) so the
-    // same indexed color resolves to the identical RGB and the strip disappears.
+    // Titanium canvas background (#151820), including the partially filled edge.
     let backend = WebGl2Backend::new_with_options(
         WebGl2BackendOptions::new()
             .grid_id(CONTAINER)
             .font_atlas_config(FontAtlasConfig::dynamic(MONO, 16.0))
-            .canvas_padding_color(ratatui::style::Color::Indexed(233)),
+            .canvas_padding_color(ratatui::style::Color::Rgb(0x15, 0x18, 0x20)),
     )?;
     let mut terminal = ratatui::Terminal::new(backend)?;
 

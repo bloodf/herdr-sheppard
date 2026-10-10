@@ -1,11 +1,9 @@
 ---
-// The zoetrope front page — a bespoke, standalone "living terminal" landing
+// The herdr-sheppard front page — a bespoke, standalone "living terminal" landing
 // (NOT the Starlight splash; the docs at /guides/* keep their Starlight chrome).
-// It reads like a zoetrope session: a dotted-grid canvas, a terminal window with
+// It reads like a herdr-sheppard session: a dotted-grid canvas, a terminal window with
 // an animated ASCII flow-graph, and the least copy that still sells the feeling —
 // because the whole app is one click away at /app.
-import { Font } from 'astro:assets';
-import Analytics from '../components/Analytics.astro';
 import Seo from '../components/Seo.astro';
 import Schema from '../components/Schema.astro';
 import { REPO_URL } from '../consts.ts';
@@ -19,16 +17,15 @@ const KEYS_URL = '/guides/usage/';
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <Analytics />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>zoetrope — watch your Claude Code and Codex agents work</title>
+    <title>herdr-sheppard — watch your Claude Code and Codex agents work</title>
     <meta
       name="description"
       content="A terminal UI that visualizes Claude Code and Codex agent sessions as a live flow graph — replay a finished transcript or follow a running one. Zero network IO; nothing leaves your machine."
     />
     <Schema />
     <Seo
-      title="zoetrope — watch your Claude Code and Codex agents work"
+      title="herdr-sheppard — watch your Claude Code and Codex agents work"
       description="A terminal UI that visualizes Claude Code and Codex agent sessions as a live flow graph — replay a finished transcript or follow a running one. Zero network IO; nothing leaves your machine."
     />
     {/* Google Search cannot read an SVG favicon — its supported list is BMP,
@@ -43,8 +40,6 @@ const KEYS_URL = '/guides/usage/';
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon-96.png" type="image/png" sizes="96x96" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <Font cssVariable="--font-mono" preload />
-    <Font cssVariable="--font-display" preload />
   </head>
 
   <body>
@@ -54,7 +49,7 @@ const KEYS_URL = '/guides/usage/';
           and the playhead survive, the three-node session inside them does not
           — at this size it is three grey pixels. The live agent stays as the
           dot in the middle and keeps the pulse the bare `●` used to carry, so
-          the header still says "something is running" as well as "zoetrope".
+          the header still says "something is running" as well as "herdr-sheppard".
           Colours come from the page tokens, not the file, so it follows the
           theme; the ink card the favicon carries is dropped because the bar
           already supplies the ground. */}
@@ -75,7 +70,7 @@ const KEYS_URL = '/guides/usage/';
             transform="rotate(120 16 16)"></line>
           <circle class="pulse-dot" cx="16" cy="16" r="2.6" fill="var(--green)"></circle>
         </svg>
-        zoetrope
+        herdr-sheppard
       </a>
       <span class="spacer"></span>
       <a class="lnk" href={KEYS_URL}>keys</a>
@@ -88,13 +83,14 @@ const KEYS_URL = '/guides/usage/';
       <!-- ── Hero ──────────────────────────────────────────────────────────── -->
       <section class="hero">
         <div class="art">
-          <ZoetropeSvg aria-label="A zoetrope flow graph showing a main agent, its subagents, and their live tool activity." />
+          <ZoetropeSvg aria-label="A herdr-sheppard flow graph showing a main agent, its subagents, and their live tool activity." />
         </div>
 
         <div class="pitch">
           <h1>watch your<br />agents <em>work.</em></h1>
+          <p class="sub">Herdr popup and browser controls for existing OMP orchestrators, workers and attached machines. Built from Zoetrope, styled with OMP Titanium.</p>
           <p class="sub">
-            Claude Code and Codex write a transcript for every session. zoetrope
+            Claude Code and Codex write a transcript for every session. herdr-sheppard
             reads it and lays the session out as a graph: which agents ran, and
             what each one is doing. Watch a live session, or replay a finished one.
           </p>
@@ -132,6 +128,7 @@ const KEYS_URL = '/guides/usage/';
 
       <!-- ── See it ────────────────────────────────────────────────────────── -->
       <section class="shots">
+        <p>Upstream Zoetrope recordings below show the original UI. This fork uses OMP Titanium.</p>
         <!-- Animated: served from public/ rather than imported. Astro's image
              pipeline (sharp) flattens animation to a single frame, so these
              bypass it entirely and are written by hand at their natural size.
@@ -149,9 +146,9 @@ const KEYS_URL = '/guides/usage/';
              <img> inside is reached only where <video> is unsupported. -->
         <div class="shot">
           <div class="shot-head"><span class="dots"><i></i><i></i><i></i></span><span>the whole session · overview</span></div>
-          <video src="/zoetrope-demo.mp4" aria-label="zoetrope replaying a Claude Code session as a flow graph, the whole tree in view" width="1728" height="944"
+          <video src="/zoetrope-demo.mp4" aria-label="herdr-sheppard replaying a Claude Code session as a flow graph, the whole tree in view" width="1728" height="944"
                  autoplay muted loop playsinline preload="metadata">
-            <img src="/zoetrope-demo.gif" alt="zoetrope replaying a Claude Code session as a flow graph, the whole tree in view" width="1728" height="944" loading="lazy" decoding="async" />
+            <img src="/zoetrope-demo.gif" alt="herdr-sheppard replaying a Claude Code session as a flow graph, the whole tree in view" width="1728" height="944" loading="lazy" decoding="async" />
           </video>
         </div>
         <p class="shotcap">One agent fans out to four subagents and a review workflow. The
@@ -159,9 +156,9 @@ const KEYS_URL = '/guides/usage/';
 
         <div class="shot">
           <div class="shot-head"><span class="dots"><i></i><i></i><i></i></span><span>following the work · live camera</span></div>
-          <video src="/zoetrope-follow.mp4" aria-label="zoetrope in follow mode, the camera tracking whichever agent is working" width="1728" height="944"
+          <video src="/zoetrope-follow.mp4" aria-label="herdr-sheppard in follow mode, the camera tracking whichever agent is working" width="1728" height="944"
                  autoplay muted loop playsinline preload="metadata">
-            <img src="/zoetrope-follow.gif" alt="zoetrope in follow mode, the camera tracking whichever agent is working" width="1728" height="944" loading="lazy" decoding="async" />
+            <img src="/zoetrope-follow.gif" alt="herdr-sheppard in follow mode, the camera tracking whichever agent is working" width="1728" height="944" loading="lazy" decoding="async" />
           </video>
         </div>
         <p class="shotcap">Hand the camera to the action (<kbd>f</kbd>) and it glides to whichever
@@ -176,9 +173,9 @@ const KEYS_URL = '/guides/usage/';
         </div>
         <div class="shot">
           <div class="shot-head"><span class="dots"><i></i><i></i><i></i></span><span>a Codex session · same app</span></div>
-          <video src="/zoetrope-codex.mp4" aria-label="zoetrope replaying a Codex CLI session as a flow graph: the main agent and the four agents it spawned, with an agent's detail panel and the session info overlay" width="1728" height="944"
+          <video src="/zoetrope-codex.mp4" aria-label="herdr-sheppard replaying a Codex CLI session as a flow graph: the main agent and the four agents it spawned, with an agent's detail panel and the session info overlay" width="1728" height="944"
                  autoplay muted loop playsinline preload="metadata">
-            <img src="/zoetrope-codex.gif" alt="zoetrope replaying a Codex CLI session as a flow graph: the main agent and the four agents it spawned, with an agent's detail panel and the session info overlay" width="1728" height="944" loading="lazy" decoding="async" />
+            <img src="/zoetrope-codex.gif" alt="herdr-sheppard replaying a Codex CLI session as a flow graph: the main agent and the four agents it spawned, with an agent's detail panel and the session info overlay" width="1728" height="944" loading="lazy" decoding="async" />
           </video>
         </div>
         <p class="shotcap">The same graph from a Codex session: the CLI on the same brief, four
@@ -196,7 +193,7 @@ const KEYS_URL = '/guides/usage/';
 
       <!-- ── Closing CTA ───────────────────────────────────────────────────── -->
       <section class="close">
-        <p class="prompt"><span class="mut">~/code/my-app $</span> zoe<span class="cursor">█</span></p>
+        <p class="prompt"><span class="mut">~/code/my-app $</span> sheppard<span class="cursor">█</span></p>
         <h2>see what your agents are doing.</h2>
         <div class="actions">
           <a class="btn primary" href="/app">▸ open the app</a>
@@ -206,25 +203,25 @@ const KEYS_URL = '/guides/usage/';
     </main>
 
     <footer class="foot">
-      <span><span class="pulse-dot">●</span> zoetrope</span>
+      <span><span class="pulse-dot">●</span> herdr-sheppard</span>
       <span class="mut">replay finished runs · follow live ones</span>
       <span class="mut">built on <a href="https://ratatui.rs" target="_blank" rel="noopener">ratatui</a> + <a href="https://github.com/ratatui/ratzilla" target="_blank" rel="noopener">ratzilla</a> · MIT</span>
     </footer>
 
     <style is:global>
       :root {
-        --gold: #d7af00;
-        --gold-bright: #f0d56a;
-        --green: #87d787;
-        --ink: #0d0d0d;
-        --ink-2: #121212;
-        --panel: #1a1a1a;
-        --line: #2a2a2a;
-        --dim: #6a6a6a;
-        --bright: #e8e8e8;
-        --err: #e07a7a;
-        --mono: var(--font-mono), ui-monospace, "SF Mono", Menlo, monospace;
-        --display: var(--font-display), var(--font-mono), ui-monospace, monospace;
+        --gold: #00b4ff;
+        --gold-bright: #00b4ff;
+        --green: #00ff88;
+        --ink: #151820;
+        --ink-2: #151820;
+        --panel: #0f1216;
+        --line: #2a3038;
+        --dim: #9ca3b0;
+        --bright: #e8ecf4;
+        --err: #ff4757;
+        --mono: var(--font-mono, ui-monospace), ui-monospace, "SF Mono", Menlo, monospace;
+        --display: var(--font-display, ui-monospace), var(--font-mono, ui-monospace), ui-monospace, monospace;
       }
 
       * { box-sizing: border-box; }
@@ -279,7 +276,7 @@ const KEYS_URL = '/guides/usage/';
       .lnk { color: var(--dim); transition: color 0.15s; }
       .lnk:hover { color: var(--bright); }
       .cta {
-        color: #170f00;
+        color: #0f1216;
         background: var(--gold);
         padding: 0.34rem 0.85rem;
         border-radius: 6px;
@@ -299,13 +296,13 @@ const KEYS_URL = '/guides/usage/';
         padding: clamp(2.5rem, 7vw, 5.5rem) 0 clamp(2rem, 5vw, 4rem);
       }
 
-      /* Hero visual: the animated brand SVG — a real zoetrope flow graph, its
+      /* Hero visual: the animated brand SVG — a real herdr-sheppard flow graph, its
          status dots pulsing via the SVG's own SMIL animation. Crisp at any size. */
       .art {
         border: 1px solid var(--line);
         border-radius: 10px;
         overflow: hidden;
-        background: #121212;
+        background: #151820;
         box-shadow:
           0 30px 80px -30px rgba(0, 0, 0, 0.9),
           0 0 60px -20px rgba(215, 175, 0, 0.12);
@@ -318,7 +315,7 @@ const KEYS_URL = '/guides/usage/';
         width: 10px; height: 10px; border-radius: 50%;
         background: var(--line); display: inline-block;
       }
-      .dots i:nth-child(1) { background: #4a3d1a; }
+      .dots i:nth-child(1) { background: #0082b3; }
       .cursor {
         color: var(--gold);
         animation: blink 1.05s steps(1) infinite;
@@ -340,7 +337,7 @@ const KEYS_URL = '/guides/usage/';
         position: relative;
       }
       .pitch .sub {
-        color: #b6b6b6;
+        color: #9ca3b0;
         font-size: clamp(0.9rem, 1.4vw, 1.02rem);
         max-width: 34ch;
         margin: 0 0 1.6rem;
@@ -358,7 +355,7 @@ const KEYS_URL = '/guides/usage/';
       }
       .btn.primary {
         background: var(--gold);
-        color: #170f00;
+        color: #0f1216;
         font-weight: 700;
         box-shadow: 0 0 0 rgba(215, 175, 0, 0.5);
       }
@@ -401,7 +398,7 @@ const KEYS_URL = '/guides/usage/';
         letter-spacing: -0.01em;
         color: var(--bright);
       }
-      .tile p { margin: 0; font-size: 0.8rem; color: #a2a2a2; line-height: 1.5; }
+      .tile p { margin: 0; font-size: 0.8rem; color: #9ca3b0; line-height: 1.5; }
 
       /* ── Screenshots ─────────────────────────────────────────────────────── */
       /* One full-width panel: the demo GIF is the centrepiece, so it gets the

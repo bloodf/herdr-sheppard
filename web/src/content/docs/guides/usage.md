@@ -10,14 +10,14 @@ matter how you launched.
 ## Launching (native)
 
 ```text
-zoe                          follow the current project's live session
-zoe <dir>                    follow another project's live session
-zoe <file.jsonl>             replay a recording from the start, paced (any file of a session)
-zoe <id>                     replay a session by id, or a unique prefix of one
-zoe <file.jsonl> --follow    open a recording at its live edge instead
-zoe <file.jsonl> --speed N   playback speed multiplier (default 8.0)
-zoe --provider codex ...     force the format instead of detecting it from the file
-zoe inspect <file|id>        print the session tree and exit (no TUI)
+sheppard                          follow the current project's live session
+sheppard <dir>                    follow another project's live session
+sheppard <file.jsonl>             replay a recording from the start, paced (any file of a session)
+sheppard <id>                     replay a session by id, or a unique prefix of one
+sheppard <file.jsonl> --follow    open a recording at its live edge instead
+sheppard <file.jsonl> --speed N   playback speed multiplier (default 8.0)
+sheppard --provider codex ...     force the format instead of detecting it from the file
+sheppard inspect <file|id>        print the session tree and exit (no TUI)
 ```
 
 A **file** target bulk-loads then tails it; a **directory** (or none → the current
@@ -50,16 +50,16 @@ The [browser app](/app) boots into a bundled demo. To watch your own session:
 
 [Herdr](https://herdr.dev) runs coding agents in panes and knows which session
 each one is. The plugin in `herdr-plugin/` asks it about the focused pane and
-launches `zoe` on that session, so nothing has to be discovered or named:
+launches `sheppard` on that session, so nothing has to be discovered or named:
 
 ```bash
 herdr integration install claude          # and/or codex, so Herdr learns session ids
-herdr plugin install furkankly/zoetrope/herdr-plugin
-herdr plugin action invoke setup-keys --plugin furkankly.zoetrope
+herdr plugin link /absolute/path/to/herdr-sheppard/herdr-plugin
+herdr plugin action invoke setup-keys --plugin bloodf.herdr-sheppard
 ```
 
-Then `prefix+shift+z` in an agent pane opens the graph over it, following live,
-and closes it again. The session id comes from the agent's `SessionStart` hook,
+Then `prefix+shift+z` in a supported Claude Code or Codex pane opens the graph over it, following live,
+and press Escape to close it. The session id comes from the agent's `SessionStart` hook,
 which is what `herdr integration install` adds, so a session that was already
 running when you installed it has to be started again before Herdr can name it.
 
@@ -116,4 +116,4 @@ playhead sits relative to the live edge:
 Press <kbd>i</kbd> for the session overlay: mode, permission mode, queued
 operations, file edits, and the last prompt. This data stays off the timeline and
 shows only when you ask for it. The same data is available headless via
-`zoe inspect <file|id>`.
+`sheppard inspect <file|id>`.

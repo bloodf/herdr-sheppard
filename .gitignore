@@ -12,3 +12,11 @@ tmp-*.gif
 
 # Working notes, not part of what ships.
 /TODO.md
+
+/web/node_modules
+/web/dist
+/web/.astro
+/web/public/wasm
+/manager/node_modules
+/manager/dist
+/manager/__pycache__

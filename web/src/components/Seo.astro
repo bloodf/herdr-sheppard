@@ -19,13 +19,13 @@ const canonical = Astro.site
 const ogImage = Astro.site ? new URL("/og.png", Astro.site).href : undefined;
 
 const IMAGE_ALT =
-  "The zoetrope terminal UI: a Claude Code session drawn as a flow graph of agent nodes, with a prompt timeline along the bottom.";
+  "The herdr-sheppard terminal UI: a Claude Code session drawn as a flow graph of agent nodes, with a prompt timeline along the bottom.";
 ---
 
 {canonical && <link rel="canonical" href={canonical} />}
 
 <meta property="og:type" content="website" />
-<meta property="og:site_name" content="zoetrope" />
+<meta property="og:site_name" content="herdr-sheppard" />
 {canonical && <meta property="og:url" content={canonical} />}
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />

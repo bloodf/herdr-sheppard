@@ -658,7 +658,7 @@ fn render_help(frame: &mut Frame, area: Rect, palette: &rataflow::Palette) {
         .border_style(bg.fg(palette.accent))
         .style(bg)
         .title_top(
-            Line::from(" zoetrope — keys ")
+            Line::from(" herdr-sheppard — keys ")
                 .centered()
                 .style(bg.fg(palette.text).add_modifier(Modifier::BOLD)),
         )
@@ -726,7 +726,7 @@ fn render_status_bar(frame: &mut Frame, area: Rect, app: &App) {
     let mut left: Vec<Span> = vec![
         // Wordmark: the gold identity chip in every screenshot.
         Span::styled(
-            " zoetrope ",
+            " herdr-sheppard ",
             Style::default()
                 .bg(palette.accent)
                 .fg(palette.canvas_bg)

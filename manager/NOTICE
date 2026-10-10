@@ -1,0 +1,1 @@
+The optional bundled OMP reporter includes Zod, distributed under the MIT license. See ZOD-LICENSE. The manager Python controller, reporter, and browser dashboard are original additions under manager/LICENSE. The repository is a fork of Zoetrope; upstream source and copyright remain covered by the root MIT LICENSE. The Herdr transcript bridge derives from that upstream code.

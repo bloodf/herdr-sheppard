@@ -19,6 +19,10 @@ cd "$(dirname "$0")/../wasm"  # -> web/wasm/, the crate root
 # each other. Trunk's own `--locked` cannot do this — it runs `cargo metadata`
 # unlocked first, which updates the lockfile before the locked build reads it.
 cargo metadata --locked --format-version 1 > /dev/null
+# Trunk accepts NO_COLOR as a boolean; shells often export it as 1.
+if [ -n "${NO_COLOR:-}" ] && [ "$NO_COLOR" != false ]; then
+  export NO_COLOR=true
+fi
 trunk build
 
 # Trunk also emits its own index.html next to the artifacts. The /app route is

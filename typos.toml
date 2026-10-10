@@ -13,6 +13,7 @@ extend-ignore-re = [
 # The dictionary reads it as a misspelling of "ratatouille". It is the library
 # rataflow, and so this crate, renders through.
 ratatui = "ratatui"
+sheppard = "sheppard"
 # Playback jargon rather than a misspelling of "sought": the media event is
 # itself named `seeked`, and a seeked-to frame is the frame a seek landed on.
 seeked = "seeked"
